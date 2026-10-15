@@ -30,7 +30,6 @@ function connectXiaozhi() {
     try {
       const msg = JSON.parse(data.toString());
 
-      // Xiaozhi যখন টুলের লিস্ট চাইবে
       if (msg.method === "tools/list") {
         ws.send(JSON.stringify({
           jsonrpc: "2.0",
@@ -53,7 +52,6 @@ function connectXiaozhi() {
         }));
       }
 
-      // Xiaozhi যখন গান সার্চ টুল কল করবে
       if (msg.method === "tools/call" && msg.params?.name === "search_youtube_music") {
         const songQuery = msg.params.arguments?.query || "";
         
@@ -97,6 +95,5 @@ function connectXiaozhi() {
 
   await startServer(mcp)
   
-  // Xiaozhi Gateway-এর সাথে সংযোগ স্থাপন
   connectXiaozhi();
 })()
