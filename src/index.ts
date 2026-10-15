@@ -53,7 +53,7 @@ function connectXiaozhi() {
         }));
       }
 
-      // Xiaozhi যখন গান সার্চ/প্লে টুল কল করবে
+      // Xiaozhi যখন গান সার্চ টুল কল করবে
       if (msg.method === "tools/call" && msg.params?.name === "search_youtube_music") {
         const songQuery = msg.params.arguments?.query || "";
         
