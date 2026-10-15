@@ -3,39 +3,12 @@
   "type": "module",
   "version": "0.0.3",
   "packageManager": "pnpm@9.14.4",
-  "description": "Simple MCP Starter Package",
-  "author": "Kevin Kern <kevin@instructa.org>",
-  "license": "MIT",
-  "homepage": "https://instructa.ai",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/instructa/mcp-starter"
-  },
-  "keywords": [
-    "mcp",
-    "mcp-starter",
-    "model-context-protocol"
-  ],
-  "exports": {
-    ".": "./dist/index.mjs"
-  },
-  "bin": {
-    "mcp": "./dist/index.mjs"
-  },
-  "files": [
-    "bin",
-    "dist"
-  ],
-  "engines": {
-    "node": ">=18.0.0"
-  },
+  "description": "Xiaozhi YouTube Music MCP Server",
+  "main": "dist/index.mjs",
   "scripts": {
-    "build": "unbuild && npm run chmod-run",
-    "chmod-run": "node -e \"fs.chmodSync('dist/index.mjs', '755');\" --require fs",
+    "build": "esbuild src/index.ts --bundle --platform=node --format=esm --target=node18 --outfile=dist/index.mjs --external:fsevents",
     "start": "node dist/index.mjs",
-    "dev": "tsx src/index.ts",
-    "inspect": "npx @modelcontextprotocol/inspector dist/index.cjs",
-    "typecheck": "tsc --noEmit"
+    "dev": "tsx src/index.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.9.0",
@@ -48,7 +21,6 @@
     "@types/ws": "^8.5.10",
     "esbuild": "^0.25.2",
     "tsx": "^4.19.3",
-    "typescript": "^5.3.3",
-    "unbuild": "^3.5.0"
+    "typescript": "^5.3.3"
   }
 }
