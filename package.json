@@ -32,10 +32,10 @@
   "scripts": {
     "build": "unbuild && npm run chmod-run",
     "chmod-run": "node -e \"fs.chmodSync('dist/index.mjs', '755');\" --require fs",
-    "start": "nodemon --exec 'tsx src/index.ts'",
+    "start": "node dist/index.mjs",
+    "dev": "tsx src/index.ts",
     "dev:prepare": "nr build",
     "inspect": "npx @modelcontextprotocol/inspector dist/index.cjs",
-    "dev": "npx concurrently 'unbuild --stub' 'npm run inspect'",
     "lint": "eslint",
     "lint:fix": "eslint src --fix",
     "typecheck": "tsc --noEmit",
@@ -44,12 +44,14 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.9.0",
     "ofetch": "^1.4.1",
+    "ws": "^8.16.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.11.0",
     "@biomejs/biome": "1.9.4",
     "@types/node": "^20.11.24",
+    "@types/ws": "^8.5.10",
     "citty": "^0.1.6",
     "dotenv": "^16.4.7",
     "esbuild": "^0.25.2",
